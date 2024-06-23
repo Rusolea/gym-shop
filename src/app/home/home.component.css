@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .products {
+    flex: 2;
+    margin-right: 20px;
+  }
+  
+  .cart {
+    flex: 1;
+    border-left: 1px solid #ccc;
+    padding-left: 20px;
+  }
+  
