@@ -24,7 +24,7 @@ export class ProductListComponent implements OnInit {
   }
 
   increaseQuantity(product: Product) {
-    if (product.stock > 0) {
+    if (product.stock > product.quantity) {
       product.quantity += 1;
       product.stock -= 1;
     }
@@ -39,11 +39,9 @@ export class ProductListComponent implements OnInit {
 
   addToCart(product: Product) {
     if (product.quantity > 0) {
-      this.cartService.addToCart(product);
+      this.cartService.addToCart({ ...product });
       product.quantity = 0; // Reset quantity to zero after adding to cart
-      if (product.stock === 0) {
-        console.log('Product is now out of stock');
-      }
+      
     }
   }
 }

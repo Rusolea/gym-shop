@@ -1,17 +1,13 @@
-<div class="container mt-5">
-    <div class="card">
-      <div class="card-body">
-        <h2 class="card-title">Carrito de compras</h2>
-        <div *ngIf="items.length === 0" class="alert alert-info">
-          Tu carrito está vacío.
-        </div>
-        <ul *ngIf="items.length > 0" class="list-group">
-          <li *ngFor="let item of items" class="list-group-item">
-            {{ item.name }}: {{ item.quantity }}
-          </li>
-        </ul>
-        <button class="btn btn-danger mt-3" (click)="clearCart()">Vaciar carrito</button>
-      </div>
-    </div>
+<div>
+  <h2 class="text-center mt-5 mb-5">Carrito de compras</h2>
+  <div *ngIf="items.length === 0" class="alert alert-info text-center">
+    Tu carrito está vacío.
   </div>
-  
+  <ul *ngIf="items.length > 0" class="list-group">
+    <li *ngFor="let item of items" class="list-group-item">
+      {{ item.name }}: {{ item.quantity }}
+    </li>
+  </ul>
+  <button class="btn btn-success mt-3" (click)="confirmPurchase()">Confirmar compra</button>
+  <button class="btn btn-danger mt-3" (click)="clearCart()">Vaciar carrito</button>
+</div>

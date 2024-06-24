@@ -20,6 +20,11 @@ export class CartComponent implements OnInit {
     console.log('Cart items on init:', this.items);
   }
 
+  confirmPurchase() {
+    this.cartService.confirmPurchase();
+    this.items = [];
+  }
+
   clearCart() {
     console.log('Clearing cart');
     this.cartService.clearCart();

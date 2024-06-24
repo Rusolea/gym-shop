@@ -21,15 +21,23 @@ export class CartService {
     if (cartItem) {
       cartItem.quantity += product.quantity;
     } else {
-      this.items.push({ ...product, quantity: product.quantity });
+      this.items.push({ ...product });
     }
-    product.stock -= product.quantity;
-    this.productService.updateProduct(product).subscribe(
-      updatedProduct => console.log('Product updated:', updatedProduct),
-      error => console.error('Error updating product:', error)
-    );
     console.log('Added to cart:', product);
     console.log('Updated cart items:', this.items);
+  }
+
+  confirmPurchase() {
+    this.items.forEach(item => {
+      const productToUpdate = { ...item };
+      productToUpdate.stock -= item.quantity;
+      this.productService.updateProduct(productToUpdate).subscribe(
+        updatedProduct => console.log('Product updated:', updatedProduct),
+        error => console.error('Error updating product:', error)
+      );
+    });
+    this.clearCart();
+    console.log('Purchase confirmed. Items:', this.items);
   }
 
   removeFromCart(product: Product) {
@@ -39,11 +47,6 @@ export class CartService {
       if (cartItem.quantity <= 0) {
         this.items = this.items.filter(item => item.id !== product.id);
       }
-      product.stock += 1;
-      this.productService.updateProduct(product).subscribe(
-        updatedProduct => console.log('Product updated:', updatedProduct),
-        error => console.error('Error updating product:', error)
-      );
       console.log('Removed from cart:', product);
       console.log('Updated cart items:', this.items);
     }
@@ -54,18 +57,8 @@ export class CartService {
   }
 
   clearCart() {
-    this.items.forEach(item => {
-      const originalProduct = this.productService.getProduct(item.id).subscribe(originalProduct => {
-        originalProduct.stock += item.quantity;
-        this.productService.updateProduct(originalProduct).subscribe(
-          updatedProduct => console.log('Product updated:', updatedProduct),
-          error => console.error('Error updating product:', error)
-        );
-      });
-    });
-    console.log('Clearing cart. Items before clear:', this.items);
     this.items = [];
-    console.log('Cart cleared. Items after clear:', this.items);
+    console.log('Cart cleared. Items:', this.items);
   }
 
   private updateCartStock(updatedStock: Product[]) {

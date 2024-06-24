@@ -1,5 +1,22 @@
 # GymShop
 
+## Descripción
+
+Este es un proyecto de un carrito de compras de elementos de gimnasio,  La aplicación permite a los usuarios ver una lista de productos, agregar productos al carrito y confirmar compras.
+
+
+
+
+
+## Datos del Estudiante
+
+- **Nombre y Apellido:** Osvaldo Juan Olea
+- **DNI:** 29682942
+- **Email:** oleaosvaldo@gmail.com 
+- **Email:** Tandil
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
 
 ## Development server
