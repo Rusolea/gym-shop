@@ -15,6 +15,8 @@ Este es un proyecto de un carrito de compras de elementos de gimnasio,  La aplic
 - **Email:** oleaosvaldo@gmail.com 
 - **Email:** Tandil
 
+![Gym Shopping Cart](src/assets/captura.png)
+
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
